@@ -3,6 +3,10 @@ import uvicorn
 
 app = FastAPI()
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok", "message": "Service is running"}
+
 @app.post("/api/orders")
 async def create_order(request: Request):
     data = await request.json()
